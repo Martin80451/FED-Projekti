@@ -15,11 +15,11 @@ db.exec(`CREATE TABLE IF NOT EXISTS Orders (
     OrderId VARCHAR(255) PRIMARY KEY,
     Date DATE NOT NULL,
     Price FLOAT NOT NULL,
-    Status VARCHAR(255) SET DEFAULT 'New',
-    UserId VARCHAR(255) NOT NULL
+    Status VARCHAR(255) DEFAULT 'New',
+    UserId VARCHAR(255) NOT NULL,
     CONSTRAINT FkUserId FOREIGN KEY (UserId) REFERENCES Users(UserId)
         ON DELETE CASCADE
-        ON UPDATE CASCADE,
+        ON UPDATE CASCADE
   )`);
 
 db.exec(`CREATE TABLE IF NOT EXISTS Authors (
@@ -79,7 +79,5 @@ db.exec(`CREATE TABLE IF NOT EXISTS OrderItems (
 console.log("Creation of database instance successful!");
 
 console.log("Adding initial data to tables...");
-
-db.prepare();
 
 db.close();
